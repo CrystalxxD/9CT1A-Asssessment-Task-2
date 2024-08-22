@@ -51,15 +51,15 @@ elif User_Want == '3':
     new_dataframe['Price (USD)'].astype(float)
     new_dataframe['Price (AUD)'] = new_dataframe['Price (USD)'].multiply(1.5)
     new_dataframe = new_dataframe.astype({'Engine Size (L)':'float','Price (AUD)':'float'})    
-    graph = str(input("What type of graph do you want. Options are scatter, bar, pie, stem: "))
+    graph = str(input("What type of graph do you want. Options are scatter, bar, pie    : "))
     x_value = str(input("What do you want on the x axis e.g Brand, Model, Year, Engine Size (L), Fuel Type, Price (USD), Price (AUD): ")) 
-    y_value = str(input("What do you want on the y axis e.g Brand, Model, Year, Engine Size (L), Fuel Type, Price (USD), Price (AUD) | If you choose pie or histogram this does not apply to the graph: "))
+    y_value = str(input("What do you want on the y axis e.g Brand, Model, Year, Engine Size (L), Fuel Type, Price (USD), Price (AUD) | If you choose pie this does not apply to the graph: "))
     title_name = str(input("What name do you want for a title:  "))
     if graph == 'scatter' or 'bar':
         new_dataframe.plot(
-                           kind= graph,
-                           x= x_value,
-                           y= y_value,
+                           kind = graph,
+                           x = x_value,
+                           y = y_value,
                            color='blue',
                            alpha=0.3,
                            title= title_name
@@ -76,16 +76,7 @@ elif User_Want == '3':
 
         # Display the pie chart
         plt.show()
-    elif graph == 'histogram':
-        plt.hist(new_dataframe[x_value], bins=5, edgecolor='black')
 
-        # Add labels and title
-        plt.xlabel(x_value)
-        plt.ylabel('Frequency')
-        plt.title(title_name)
-
-        # Display the plot
-        plt.show()
     else:
         print("Not a valid option")
 else:

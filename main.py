@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 while True:
-    User_Want = input(" [1] - All data from data frame | [2] - Choose what data you want | [3] - Graph of all the data | Pick a number. 1, 2 or 3:  ")
+    User_Want = input(" [1] - All data from data frame | [2] - Choose what data you want | [3] - Graph of all the data | [4] - Quit Program | Pick a number between 1 and 4:  ")
     if User_Want == '1':
         new_dataframe = pd.read_csv('Data/cars_2010_2020.csv')
         new_dataframe['Price (USD)'].astype(float)
@@ -79,5 +79,8 @@ while True:
 
         else:
             print("Not a valid option")
+    elif User_Want == '4':
+        print('Thank you for using the program. The dataframe was sourced from https://www.kaggle.com/datasets/waqi786/cars-dataset-2010-2020')
+        break
     else:
         print("Not a valid option") 

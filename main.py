@@ -2,8 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 while True:
-    User_Want = input(" [1] - All data from data frame | [2] - Choose what data you want | [3] - Graph of all the data | [4] - Quit Program | Pick a number between 1 and 4:  ")
+    User_Want = input("[1] - Original dataframe [2] - All data from data frame | [3] - Choose what data you want | [4] - Graph of all the data | [5] - Quit Program | Pick a number between 1 and 5:  ")
     if User_Want == '1':
+        new_dataframe = pd.read_csv('Data/cars_2010_2020.csv')
+        print(new_dataframe)
+        
+    elif User_Want == '2':
         new_dataframe = pd.read_csv('Data/cars_2010_2020.csv')
         new_dataframe['Price (USD)'].astype(float)
         new_dataframe['Price (AUD)'] = new_dataframe['Price (USD)'].multiply(1.5)
@@ -11,7 +15,7 @@ while True:
         print(new_dataframe)
 
 
-    elif User_Want == '2':
+    elif User_Want == '3':
         new_dataframe = pd.read_csv('Data/cars_2010_2020.csv')
         new_dataframe['Price (USD)'].astype(float)
         new_dataframe['Price (AUD)'] = new_dataframe['Price (USD)'].multiply(1.5)
@@ -58,7 +62,7 @@ while True:
             # Display the pie chart
             plt.show()
 
-    elif User_Want == '3':
+    elif User_Want == '4':
         new_dataframe = pd.read_csv('Data/cars_2010_2020.csv')
         new_dataframe['Price (USD)'].astype(float)
         new_dataframe['Price (AUD)'] = new_dataframe['Price (USD)'].multiply(1.5)
@@ -91,7 +95,7 @@ while True:
 
         else:
             print("Not a valid option")
-    elif User_Want == '4':
+    elif User_Want == '5':
         print('Thank you for using the program. The dataframe was sourced from https://www.kaggle.com/datasets/waqi786/cars-dataset-2010-2020')
         break
     else:

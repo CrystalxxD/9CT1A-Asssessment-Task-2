@@ -32,19 +32,31 @@ while True:
         # Display the result
         print(new_new_result)
 
-        graph = str(input("What type of graph do you want. Options are plot, scatter, bar, pie, stem, stackplot, stairs: "))
+        graph = str(input("What type of graph do you want. Options are scatter, bar, pie : "))
         x_value = str(input("What do you want on the x axis e.g Brand, Model, Year, Engine Size (L), Fuel Type, Price (USD), Price (AUD): ")) 
-        y_value = str(input("What do you want on the y axis e.g Brand, Model, Year, Engine Size (L), Fuel Type, Price (USD), Price (AUD): "))
+        y_value = str(input("What do you want on the y axis e.g Brand, Model, Year, Engine Size (L), Fuel Type, Price (USD), Price (AUD) | If you choose pie type the same input as above: "))
         title_name = str(input("What name do you want for a title:  "))
-        new_new_result.plot(
-                            kind= graph,
-                            x= x_value,
-                            y= y_value,
-                            color='blue',
-                            alpha=0.3,
-                            title= title_name
-                            )
-        plt.show()
+        if graph == 'scatter' or 'bar':
+            new_dataframe.plot(
+                                kind = graph,
+                                x = x_value,
+                                y = y_value,
+                                color='blue',
+                                alpha=0.3,
+                                title= title_name
+                                )
+            plt.show()
+        elif graph == 'pie':
+            category_counts = new_dataframe[x_value ].value_counts()
+
+            # Create pie chart
+            plt.pie(category_counts, labels=category_counts.index, autopct='%1.1f%%', startangle=140)
+
+            # Equal aspect ratio ensures that pie is drawn as a circle.
+            plt.axis('equal')
+
+            # Display the pie chart
+            plt.show()
 
     elif User_Want == '3':
         new_dataframe = pd.read_csv('Data/cars_2010_2020.csv')
